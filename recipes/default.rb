@@ -1,6 +1,12 @@
+builder = data_bag_item('builders', 'awesome-demo-content')
+apt_repo_uri = builder['apt_repo_uri']
+apt_repo_component = builder['apt_repo_component']
+builder_id = builder['id']
+
+#TODO - probably want to drive this whole section off of the builder_id later
 apt_repository 'awesome-demo' do
-  uri        'http://demo.awesome-co.com/deb'
-  components ['main']
+  uri        apt_repo_uri
+  components apt_repo_component
 end
 
 package 'awesome-demo' do
